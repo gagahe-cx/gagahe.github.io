@@ -95,7 +95,7 @@ body{
 /* 关键：图片不再固定高度，使用自然高 */
 .grid.masonry .item img{
   width: 100%;
-  height: auto;             /* 覆盖原来固定 280px 的设定 */
+  height: 100%;             /* 覆盖原来固定 280px 的设定 */
   display: block;
 }
 
