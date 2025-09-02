@@ -83,7 +83,6 @@ body{
   display: block !important;
   grid-template-columns: none !important;
   grid-auto-rows: auto !important;
-  gap: 0 !important;
 
   column-count: 2;
   column-gap: 38px;
