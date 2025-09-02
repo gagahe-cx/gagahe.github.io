@@ -82,7 +82,7 @@ body{
 .grid.masonry{
   display: block !important;
   grid-template-columns: none !important;
-  /* grid-auto-rows: auto !important; */
+  grid-auto-rows: auto !important;
 
   column-count: 2;
   column-gap: 38px;
