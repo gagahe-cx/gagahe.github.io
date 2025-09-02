@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>个人主页 · Your Name</title>
+  <meta name="description" content="个人主页与作品集">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top">Your Name</a>
+    <button class="nav-toggle" aria-label="切换导航">☰</button>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="#about">关于我</a>
+      <a href="#projects">项目</a>
+      <a href="#services">服务</a>
+      <a href="#testimonials">评价</a>
+      <a href="#contact">联系</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Hi，我是 <span class="accent">Your Name</span></h1>
+        <p class="subtitle">机器学习 / 数据科学 / 全栈</p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#projects">查看项目</a>
+          <a class="btn" href="assets/cv.pdf" download>下载简历 (PDF)</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1600&auto=format&fit=crop" alt="封面图片" loading="lazy">
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container grid-2">
+        <div>
+          <h2>关于我</h2>
+          <p>这里写一句简短自我介绍。比如：我做机器学习研究，做过 A/B 测试、数据工程管道、可视化工具等。</p>
+          <p>补充一段更详细的背景与兴趣点。可以附上论文、开源项目或线上演讲链接。</p>
+          <div class="badges">
+            <span class="badge">Python</span>
+            <span class="badge">PyTorch</span>
+            <span class="badge">SQL</span>
+            <span class="badge">GitHub Pages</span>
+          </div>
+        </div>
+        <div>
+          <img class="avatar" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1200&auto=format&fit=crop" alt="个人照片" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section alt">
+      <div class="container">
+        <h2>精选项目</h2>
+        <div class="cards">
+          <article class="card">
+            <img src="https://picsum.photos/seed/p1/800/600" alt="项目 1">
+            <div class="card-body">
+              <h3>项目一：LLM 调研与评测</h3>
+              <p>大规模问卷模拟、温度敏感性分析、排序一致性指标。</p>
+              <a class="link" href="#" target="_blank" rel="noopener">查看仓库 →</a>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://picsum.photos/seed/p2/800/600" alt="项目 2">
+            <div class="card-body">
+              <h3>项目二：图文检索与重排</h3>
+              <p>基于 CLIP/多模态模型的电商检索与复排，提升 Top‑k 排名。</p>
+              <a class="link" href="#" target="_blank" rel="noopener">查看仓库 →</a>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://picsum.photos/seed/p3/800/600" alt="项目 3">
+            <div class="card-body">
+              <h3>项目三：可视化与仪表盘</h3>
+              <p>研究流程与实验指标可视化，实时汇报与调试。</p>
+              <a class="link" href="#" target="_blank" rel="noopener">查看仓库 →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section">
+      <div class="container">
+        <h2>我能做什么</h2>
+        <div class="cards three">
+          <div class="card mini">
+            <h3>数据工程</h3>
+            <p>数据建模、ETL、质量监控、成本优化。</p>
+          </div>
+          <div class="card mini">
+            <h3>机器学习</h3>
+            <p>训练、评测、上线，A/B 与可解释性。</p>
+          </div>
+          <div class="card mini">
+            <h3>可视化</h3>
+            <p>交互式图表、研究报告、演示网站。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section alt">
+      <div class="container">
+        <h2>合作评价</h2>
+        <div class="quotes">
+          <blockquote>
+            <p>“沟通顺畅，交付靠谱，结果可复现。”</p>
+            <cite>—— 某合作方</cite>
+          </blockquote>
+          <blockquote>
+            <p>“在紧张的时间节点下完成了高质量可视化。”</p>
+            <cite>—— 某研究同事</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container grid-2">
+        <div>
+          <h2>联系</h2>
+          <p>可以在这里放置邮箱、社媒或表单。</p>
+          <ul class="contact-list">
+            <li>邮箱：<a href="mailto:you@example.com">you@example.com</a></li>
+            <li>GitHub：<a href="https://github.com/yourname" target="_blank" rel="noopener">yourname</a></li>
+            <li>LinkedIn：<a href="#" target="_blank" rel="noopener">链接</a></li>
+          </ul>
+        </div>
+        <form class="contact-form" action="https://formspree.io/f/your-id" method="POST">
+          <label>您的邮箱
+            <input type="email" name="email" required>
+          </label>
+          <label>留言
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+          <button class="btn primary" type="submit">发送</button>
+          <p class="form-note">* 表单托管在 Formspree。请把 <code>your-id</code> 替换为你的表单 ID。</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Your Name · 托管于 GitHub Pages</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
