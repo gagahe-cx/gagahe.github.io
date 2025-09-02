@@ -78,36 +78,38 @@ body{
   .site-nav.open a{margin:6px 10px}
 }
 
-/* Masonry 列布局（桌面 3 列，平板 2 列，手机 1 列） */
+/* Masonry：两列，列间 16px；不再用 grid 的 gap */
 .grid.masonry{
-  display: block !important;     /* 关闭 grid 布局 */
-  /* 可选：把旧的 grid 属性显式清掉（保险） */
+  display: block !important;
   grid-template-columns: none !important;
   grid-auto-rows: auto !important;
   gap: 0 !important;
-  column-count: 2;          /* 也可用 column-width: 320px; 自动算列数 */
+
+  column-count: 2;
   column-gap: 16px;
+  column-fill: balance;
 }
 
-/* 每个作品块作为“列内块”，避免被拆断 */
+/* 关键：只用下外边距来控制“列内垂直间距” */
 .grid.masonry .item{
-  break-inside: avoid;      /* 防止跨列拆分 */
+  break-inside: avoid;
   -webkit-column-break-inside: avoid;
-  display: block;           /* 或 inline-block; 宽度仍占满列 */
-  margin: 0 16px;
+  page-break-inside: avoid;
+
+  display: block;
+  margin: 0 0 16px;   /* ← 改成只给底部留 16px */
 }
 
-/* 关键：图片不再固定高度，使用自然高 */
+/* figure 默认有外边距，要清掉 */
+.grid.masonry figure{ margin: 0; }
+
+/* 图片自适应高度；object-fit 在 height:auto 时不生效，可去掉 */
 .grid.masonry .item img{
   width: 100%;
-  height: auto;             /* 覆盖原来固定 280px 的设定 */
+  height: auto !important;
   display: block;
 }
 
-/* 小屏列数调整 */
-@media (max-width: 900px){
-  .grid.masonry{ column-count: 2; }
-}
-@media (max-width: 640px){
-  .grid.masonry{ column-count: 1; }
-}
+/* 响应式列数 */
+@media (max-width: 900px){ .grid.masonry{ column-count: 2; } }
+@media (max-width: 640px){ .grid.masonry{ column-count: 1; } }
