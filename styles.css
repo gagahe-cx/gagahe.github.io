@@ -89,7 +89,7 @@ body{
   break-inside: avoid;      /* 防止跨列拆分 */
   -webkit-column-break-inside: avoid;
   display: block;           /* 或 inline-block; 宽度仍占满列 */
-  margin: 0 0 16px;
+  margin: 16px 16px;
 }
 
 /* 关键：图片不再固定高度，使用自然高 */
