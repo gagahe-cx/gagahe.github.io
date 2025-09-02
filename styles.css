@@ -80,6 +80,10 @@ body{
 
 /* Masonry：两列，列间 16px；不再用 grid 的 gap */
 .grid.masonry{
+  display: block !important;
+  grid-template-columns: none !important;
+  /* grid-auto-rows: auto !important; */
+
   column-count: 2;
   column-gap: 38px;
 }
