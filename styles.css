@@ -87,7 +87,6 @@ body{
 
   column-count: 2;
   column-gap: 38px;
-  column-fill: balance;
 }
 
 /* 关键：只用下外边距来控制“列内垂直间距” */
