@@ -86,7 +86,7 @@ body{
   gap: 0 !important;
 
   column-count: 2;
-  column-gap: 38px;
+  column-gap: 60px;
 }
 
 /* 关键：只用下外边距来控制“列内垂直间距” */
@@ -104,7 +104,7 @@ body{
 
 /* 图片自适应高度；object-fit 在 height:auto 时不生效，可去掉 */
 .grid.masonry .item img{
-  width: auto !important;
+  width: 100% !important;
   height: auto !important;
   display: block;
 }
