@@ -96,7 +96,7 @@ body{
   page-break-inside: avoid;
 
   display: block;
-  margin: 0 0 25px;   /* ← 改成只给底部留 16px */
+  margin: 10px 10px 25px;   /* ← 改成只给底部留 16px */
 }
 
 /* figure 默认有外边距，要清掉 */
