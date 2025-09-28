@@ -31,7 +31,11 @@
       <h2 class="section-title">Selected Work</h2>
       <div class="grid masonry">
         <figure class="item">
-          <img src="assets/work/work01.jpg" alt="项目 01 | 海报系列" data-caption="海报系列 · 2024">
+          <img src="assets/work/work01.jpg" alt="项目 01 | 海报系列" data-caption="海报系列 · 2024" data-articles='[
+      {"title":"Attention Is All You Need","url":"https://arxiv.org/abs/1706.03762"},
+      {"title":"Segment Anything","url":"https://arxiv.org/abs/2304.02643"},
+      {"title":"LoRA: Low-Rank Adaptation","url":"https://arxiv.org/abs/2106.09685"}
+    ]'>
           <figcaption>海报系列 · 2024</figcaption>
         </figure>
         <figure class="item">
@@ -89,6 +93,7 @@
     <figure class="lb-figure">
       <img id="lb-image" alt="" />
       <figcaption id="lb-caption"></figcaption>
+      <ul id="lb-articles" class="lb-articles" aria-label="相关文章列表"></ul>
     </figure>
     <button class="lb-next" aria-label="下一张">›</button>
   </div>
