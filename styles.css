@@ -12,6 +12,12 @@ body{
   color:var(--text); background:var(--bg);
 }
 
+/* 锚点抵消粘性头部 */
+section, .section { scroll-margin-top: 72px; }
+
+/* 焦点可见 */
+:focus-visible{ outline:2px solid #3b82f6; outline-offset:2px; border-radius:6px; }
+
 .site-header{
   position:sticky; top:0; z-index:10;
   display:flex; align-items:center; justify-content:space-between;
@@ -49,14 +55,64 @@ body{
 
 .site-footer{padding:32px 20px; text-align:center; color:var(--muted); border-top:1px solid var(--line)}
 
+/* Masonry：用 column-count；列间距 column-gap，行距用底部外边距 */
+.grid.masonry{
+  display:block !important;
+  grid-template-columns:none !important;
+  grid-auto-rows:auto !important;
+  gap:0 !important;
+
+  column-count:2;
+  column-gap:20px; /* 改成 16px 也可以 */
+}
+.grid.masonry .item{
+  break-inside:avoid;
+  -webkit-column-break-inside:avoid;
+  page-break-inside:avoid;
+
+  display:block;
+  margin:0 0 20px 0; /* 只留底部行距 */
+}
+.grid.masonry figure{ margin:0; }
+.grid.masonry .item img{ width:100% !important; height:auto !important; display:block; }
+
+/* Lightbox */
 .lightbox{
-  position:fixed; inset:0; background:rgba(255,255,255,.98); display:none; align-items:center; justify-content:center; gap:16px;
+  position:fixed; inset:0;
+  background:rgba(255,255,255,.98);
+  display:none; align-items:center; justify-content:center; gap:16px;
+
+  overflow:auto;                 /* 弹层可滚 */
+  overscroll-behavior:contain;   /* 阻止滚到背景 */
 }
 .lightbox.open{display:flex}
-.lb-figure{margin:0; max-width:min(96vw, 1400px); max-height:90vh; display:flex; flex-direction:column; align-items:center}
-#lb-image{max-width:100%; max-height:82vh; border:1px solid var(--line); background:#fff}
+
+.lb-figure{
+  margin:0;
+  max-width:min(96vw, 1400px);
+  max-height:90vh;
+  display:flex; flex-direction:column; align-items:center;
+}
+#lb-image{max-width:100%; max-height:70vh; border:1px solid var(--line); background:#fff}
 #lb-caption{margin-top:10px; color:var(--muted); font-size:14px; text-align:center}
 
+/* 文章列表：在弹层内独立滚动 */
+.lb-articles{
+  margin:10px 0 0;
+  padding:0 0 2px 18px;
+  max-height:32vh;
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+  text-align:left;
+}
+.lb-articles li{ margin:6px 0; }
+.lb-articles a{
+  text-decoration:none;
+  border-bottom:1px dashed rgba(0,0,0,.25);
+}
+.lb-articles a:hover{ opacity:.8; }
+
+/* Lightbox 控制按钮 */
 .lb-close, .lb-prev, .lb-next{
   position:fixed; background:#fff; border:1px solid var(--line); color:#111;
   width:36px; height:36px; border-radius:999px; display:flex; align-items:center; justify-content:center;
@@ -66,66 +122,40 @@ body{
 .lb-prev{left:16px; top:50%; transform:translateY(-50%); font-size:26px}
 .lb-next{right:16px; top:50%; transform:translateY(-50%); font-size:26px}
 
+/* 响应式 */
 @media (max-width: 900px){
   .grid{grid-template-columns:repeat(2, 1fr)}
   .about{grid-template-columns:1fr}
+  .grid.masonry{ column-count:2; }
 }
 @media (max-width: 640px){
   .grid{grid-template-columns:1fr}
   .site-nav{display:none}
   .nav-toggle{display:block}
-  .site-nav.open{display:flex; position:absolute; right:12px; top:54px; background:#fff; border:1px solid var(--line); border-radius:10px; padding:8px; flex-direction:column}
+  .site-nav.open{
+    display:flex; position:absolute; right:12px; top:54px; background:#fff; border:1px solid var(--line); border-radius:10px; padding:8px; flex-direction:column;
+    z-index:20; box-shadow:0 6px 24px rgba(0,0,0,.08);
+  }
   .site-nav.open a{margin:6px 10px}
+  .grid.masonry{ column-count:1; }
 }
 
-/* Masonry：两列，列间 16px；不再用 grid 的 gap */
-.grid.masonry{
-  display: block !important;
-  grid-template-columns: none !important;
-  grid-auto-rows: auto !important;
-  gap: 0 !important;
-
-  column-count: 2;
-  column-gap: 60px;
-}
-
-/* 关键：只用下外边距来控制“列内垂直间距” */
-.grid.masonry .item{
-  break-inside: avoid;
-  -webkit-column-break-inside: avoid;
-  page-break-inside: avoid;
-
-  display: block;
-  margin: 10px 10px 25px;   /* ← 改成只给底部留 16px */
-}
-
-/* figure 默认有外边距，要清掉 */
-.grid.masonry figure{ margin: 0; }
-
-/* 图片自适应高度；object-fit 在 height:auto 时不生效，可去掉 */
-.grid.masonry .item img{
-  width: 100% !important;
-  height: auto !important;
-  display: block;
-}
-
-/* 响应式列数 */
-@media (max-width: 900px){ .grid.masonry{ column-count: 2; } }
-@media (max-width: 640px){ .grid.masonry{ column-count: 1; } }
-
-.lb-articles{
-  margin: 10px 0 0;
-  padding: 0 0 2px 18px; /* 使用列表圆点 */
-  max-height: 24vh;     /* 列表较长时可滚动 */
-  overflow: auto;
-  text-align: left;
-}
-.lb-articles li{ margin: 6px 0; }
-.lb-articles a{
-  text-decoration: none;
-  border-bottom: 1px dashed rgba(0,0,0,.25);
-}
-.lb-articles a:hover{ opacity: .8; }
-@media (prefers-color-scheme: dark){
+/* 深色模式 */
+@media (prefers-color-scheme: dark) {
+  :root{
+    --bg:#0b0b0b;
+    --text:#f3f3f3;
+    --muted:#a0a0a0;
+    --line:#222;
+  }
+  .section.alt{ background:#0f0f0f; }
+  .site-header, .item, #lb-image, .lb-close, .lb-prev, .lb-next { background:#111; }
+  .item figcaption{ background:rgba(16,16,16,.85); color:#eaeaea; border-top:1px solid var(--line); }
   .lb-articles a{ border-bottom-color: rgba(255,255,255,.35); }
+}
+
+/* 减少动画 */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within { scroll-behavior: auto; }
+  .item img, .item:hover img { transition:none; transform:none; }
 }
